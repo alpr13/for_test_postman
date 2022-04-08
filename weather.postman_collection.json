@@ -1,0 +1,545 @@
+{
+	"info": {
+		"_postman_id": "ab763f69-7556-498b-984d-bb290f9ed8b4",
+		"name": "weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "location city request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"We got coordinates latitude\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lat\");\r",
+							"});pm.test(\"We got coordinates longitude\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lon\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"lat\", jsonData[0].lat);\r",
+							"pm.environment.set(\"lon\", jsonData[0].lon);\r",
+							"/*\r",
+							"console.log(jsonData);\r",
+							"console.log(jsonData[0].lat);\r",
+							"console.log(jsonData[0].lon);*/\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{REQW}}?q={{city}}",
+					"host": [
+						"{{REQW}}"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "{limit}",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "{{city}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat={{lat}}&lon={{lon}}",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "+ 4 DAYS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat={{lat}}&lon={{lon}}&cnt=3",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "cnt",
+							"value": "3"
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "+ 16 days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat={{lat}}&lon={{lon}}&cnt=10",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "cnt",
+							"value": "10"
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "+ 30 days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat={{lat}}&lon={{lon}}&cnt=20",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "cnt",
+							"value": "20"
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "history 1-12 month",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat={{lat}}&lon={{lon}}&start={{historydate_start}}&end={{historydate_end}}",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}",
+							"disabled": true
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "start",
+							"value": "{{historydate_start}}"
+						},
+						{
+							"key": "end",
+							"value": "{{historydate_end}}"
+						},
+						{
+							"key": "cnt",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "response 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{CURRENT_OPENW}}?lang=ru&lat=&lon={{lon}}&appid={{appid}}",
+					"host": [
+						"{{CURRENT_OPENW}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": ""
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		},
+		{
+			"name": "response 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5?lang=ru&lat={{lat}}&lon={{lon}}&appid={{appid}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "lat",
+							"value": "{{lat}}"
+						},
+						{
+							"key": "lon",
+							"value": "{{lon}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						}
+					]
+				},
+				"description": "111"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "appid",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "172b3755252741650140e79604dad54e",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
